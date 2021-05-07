@@ -1,6 +1,6 @@
 extends "res://src/Actors/Actor.gd"
 
-onready var raycast = $RayCast2D
+#onready var raycast = $RayCast2D
 onready var hitbox = $CollisionShape2D
 
 var player = null

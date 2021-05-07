@@ -9,7 +9,7 @@ b = Vector2( 0.159973, 22.516 )
 [node name="Bullet" type="RigidBody2D"]
 collision_layer = 16
 collision_mask = 10
-mass = 0.1
+mass = 0.28
 applied_force = Vector2( 1, 1 )
 script = ExtResource( 2 )
 

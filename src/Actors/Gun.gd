@@ -4,8 +4,8 @@ extends Node2D
 
 onready var ray: = $RayCast2D
 
-export var bullet_speed = 1000
-export var fire_rate = 0.2
+export var bullet_speed = 2000
+export var fire_rate = 0.1
 var bullet = preload("res://src/Effects/Bullet.tscn")
 var can_fire = true 
 
