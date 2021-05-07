@@ -1,9 +1,8 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://assets/player.png" type="Texture" id=1]
 [ext_resource path="res://src/Actors/Player.gd" type="Script" id=2]
-[ext_resource path="res://assets/Just_A_Bullet (2).png" type="Texture" id=3]
-[ext_resource path="res://src/Effects/GunfireEffect.tscn" type="PackedScene" id=4]
+[ext_resource path="res://src/Actors/Gun.tscn" type="PackedScene" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 39.7924, 43.746 )
@@ -15,29 +14,6 @@ __meta__ = {
 "_edit_vertical_guides_": [ -269.542 ]
 }
 speed = Vector2( 800, 1400 )
-gunfire = ExtResource( 4 )
-
-[node name="Pointer" type="Node2D" parent="."]
-position = Vector2( 46.669, -41.0122 )
-
-[node name="gun" type="Sprite" parent="Pointer"]
-position = Vector2( 27.4731, 2.8284 )
-rotation = -1.51844
-scale = Vector2( 0.881333, 0.810468 )
-texture = ExtResource( 3 )
-
-[node name="GunfireEffect" parent="Pointer/gun" instance=ExtResource( 4 )]
-show_behind_parent = true
-position = Vector2( 25.6305, 231.606 )
-rotation = 1.52264
-scale = Vector2( 0.616797, 0.567464 )
-gunfire = ExtResource( 4 )
-
-[node name="RayCast2D" type="RayCast2D" parent="Pointer"]
-enabled = true
-cast_to = Vector2( 800, 0 )
-collision_mask = 10
-collide_with_areas = true
 
 [node name="player" type="Sprite" parent="."]
 position = Vector2( 0, -48 )
@@ -56,3 +32,6 @@ drag_margin_v_enabled = true
 smoothing_enabled = true
 offset_h = 0.25
 offset_v = -1.0
+
+[node name="Gun" parent="." instance=ExtResource( 3 )]
+position = Vector2( 74.751, -48.7672 )

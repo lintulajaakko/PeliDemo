@@ -1,6 +1,7 @@
 extends "res://src/Actors/Actor.gd"
 
 onready var raycast = $RayCast2D
+onready var hitbox = $CollisionShape2D
 
 var player = null
 
@@ -16,6 +17,8 @@ func _physics_process(delta: float) -> void:
 #		var call = raycast.get_collider()
 #		if call.name == "Player":
 #			call.kill()
+	
+	
 	
 	velocity.y += gravity * delta
 	if is_on_wall():

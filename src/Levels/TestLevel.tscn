@@ -50,6 +50,3 @@ position = Vector2( 255.85, 163.235 )
 
 [node name="Enemy" parent="." instance=ExtResource( 3 )]
 position = Vector2( 826.084, 461.211 )
-
-[connection signal="fired_shot" from="Player" to="." method="_on_Player_fired_shot"]
-[connection signal="gun_firing" from="Player" to="Player" method="_on_Player_gun_firing"]
