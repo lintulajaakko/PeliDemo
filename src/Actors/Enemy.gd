@@ -10,6 +10,11 @@ func _ready() -> void:
 	velocity.x = -speed.x
 	add_to_group("enemies")
 
+func _on_HitDetector_body_entered(body: Node) -> void:
+	if body.is_in_group("bullets"): 
+		kill()
+
+
 
 func _physics_process(delta: float) -> void:
 
@@ -30,3 +35,5 @@ func kill():
 
 func set_player(p):
 	player = p
+
+
