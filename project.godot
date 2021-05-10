@@ -22,7 +22,7 @@ _global_script_classes=[ {
 "base": "Node2D",
 "class": "Gun",
 "language": "GDScript",
-"path": "res://src/Actors/Gun.gd"
+"path": "res://src/Actors/Guns/Gun.gd"
 } ]
 _global_script_class_icons={
 "Actor": "",

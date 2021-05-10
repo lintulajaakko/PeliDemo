@@ -1,4 +1,4 @@
-extends Gun
+extends "res://src/Actors/Guns/Gun.tscn"
 
 
 func _ready() -> void:

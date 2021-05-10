@@ -2,7 +2,9 @@ extends Actor
 
 onready var player_animation = $AnimationPlayer
 
-
+var current_weapon
+onready var wp_1 = $Rifle
+onready var wp_2 = $Bow
 
 
 func _physics_process(delta: float) -> void:
@@ -35,11 +37,12 @@ func _physics_process(delta: float) -> void:
 		current_weapon = wp_1
 		wp_1.set_visible(true)
 		wp_2.set_visible(false)
-
+		wp_2.set_process(false)
 	if Input.is_action_pressed("weapon_2"):
 		current_weapon = wp_2
 		wp_2.set_visible(true)
 		wp_1.set_visible(false)
+		wp_1.set_process(false)
 	
 	#---------------------------------------------------------------------------
 	
@@ -68,9 +71,7 @@ func calculate_move_velocity(
 #---------------------------------------------------------------------------
 
 
-var current_weapon
-onready var wp_1 = $Rifle
-onready var wp_2 = $Bow
+
 
 #func _unhandled_input(event: InputEvent) -> void:
 #	look_at(get_global_mouse_position())
