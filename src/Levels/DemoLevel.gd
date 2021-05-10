@@ -3,6 +3,9 @@ extends Node2D
 
 export var hit_effect: PackedScene
 
+func _ready() -> void:
+	add_to_group("world")
+
 
 func generate_hit_effect(hit_position: Vector2)->void:
 	var temp = hit_effect.instance()
