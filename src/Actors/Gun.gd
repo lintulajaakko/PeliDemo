@@ -5,8 +5,8 @@ export var bullet_speed = 0
 export var fire_rate = 0.0
 
 var bullet
-var ammo_type 
-var can_fire = false
+var ammo_type
+var can_fire = true
 var arrows = preload("res://src/Actors/Bullets/BowArrow.tscn")
 var rifle_rounds = preload("res://src/Actors/Bullets/RifleRound.tscn")
 
@@ -17,11 +17,9 @@ func _unhandled_input(event: InputEvent) -> void:
 
 	if Input.is_action_pressed("weapon_1"):
 		ammo_type = rifle_rounds
-		can_fire = true 
-	
+		
 	if Input.is_action_pressed("weapon_2"):
 		ammo_type = arrows
-		can_fire = true
 	
 #-------------------------------------------------------------------------------
 	if event.is_action_pressed("shoot") and can_fire:
@@ -33,3 +31,6 @@ func _unhandled_input(event: InputEvent) -> void:
 		can_fire = false
 		yield(get_tree().create_timer(fire_rate), "timeout")
 		can_fire = true
+	
+	
+
