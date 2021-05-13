@@ -114,3 +114,6 @@ position = Vector2( -5.96735, -56.8816 )
 
 [node name="Bow" parent="." instance=ExtResource( 4 )]
 position = Vector2( -8.79578, -61.8314 )
+
+[connection signal="weapon_switched" from="." to="Rifle" method="_on_Player_weapon_switched"]
+[connection signal="weapon_switched" from="." to="Bow" method="_on_Player_weapon_switched"]

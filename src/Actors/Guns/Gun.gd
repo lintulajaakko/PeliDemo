@@ -9,11 +9,14 @@ var ammo_type
 var can_fire = false
 var arrows = preload("res://src/Actors/Bullets/BowArrow.tscn")
 var rifle_rounds = preload("res://src/Actors/Bullets/RifleRound.tscn")
+var gun_id 
 
 
 func _unhandled_input(event: InputEvent) -> void:
 	look_at(get_global_mouse_position())
 	#var call = ray.get_collider()
+	if Input.is_action_pressed("no_weapon"):
+		can_fire = false
 
 	if Input.is_action_pressed("weapon_1"):
 		ammo_type = rifle_rounds

@@ -2,9 +2,8 @@ extends Actor
 
 onready var player_animation = $AnimationPlayer
 
-var current_weapon
-onready var wp_1 = $Rifle
-onready var wp_2 = $Bow
+
+
 
 
 func _physics_process(delta: float) -> void:
@@ -31,21 +30,45 @@ func _physics_process(delta: float) -> void:
 	if Input.get_action_strength("jump") and (direction.x == -1 or direction.x == 0):
 		player_animation.play("Jump_Left")
 		
-			#Gun inputs
-	#var current_weapon = 1
+	gun_inputs()
+	#---------------------------------------------------------------------------
+
+onready var wp_1 = $Rifle
+onready var wp_2 = $Bow
+var current_weapon = 0
+signal weapon_switched
+
+
+func gun_inputs() -> void:
+	
+	if Input.is_action_pressed("no_weapon"):
+		current_weapon = 0
+	
 	if Input.is_action_pressed("weapon_1"):
-		current_weapon = wp_1
+		current_weapon = 1
+	
+	if Input.is_action_pressed("weapon_2"):
+		current_weapon = 2
+	
+	if current_weapon == 0:
+		wp_1.set_visible(false)
+		wp_1.set_process(false)
+		wp_2.set_visible(false)
+		wp_2.set_process(false)
+	
+	if current_weapon == 1:
 		wp_1.set_visible(true)
 		wp_2.set_visible(false)
 		wp_2.set_process(false)
-	if Input.is_action_pressed("weapon_2"):
-		current_weapon = wp_2
+		emit_signal("weapon_switched", current_weapon)
+
+
+	if current_weapon == 2:
 		wp_2.set_visible(true)
 		wp_1.set_visible(false)
 		wp_1.set_process(false)
-	
-	#---------------------------------------------------------------------------
-	
+		emit_signal("weapon_switched", current_weapon)
+
 func get_direction() -> Vector2:
 	return Vector2(
 		Input.get_action_strength("move_right") - Input.get_action_strength("move_left"), 
