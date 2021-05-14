@@ -5,6 +5,7 @@ func _ready() -> void:
 	fire_rate = 0.1
 	#bullet = preload("res://src/Actors/Bullets/RifleRound.tscn")
 	gun_id = 1
+	damage = 2
 
 
 func _on_Player_weapon_switched(type: int) -> void:

@@ -1,9 +1,11 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://assets/spritesheet.png" type="Texture" id=1]
 [ext_resource path="res://src/Actors/Player.gd" type="Script" id=2]
 [ext_resource path="res://src/Actors/Guns/Rifle.tscn" type="PackedScene" id=3]
 [ext_resource path="res://src/Actors/Guns/Bow.tscn" type="PackedScene" id=4]
+[ext_resource path="res://src/UI/HealthBar.tscn" type="PackedScene" id=5]
+[ext_resource path="res://src/UI/Health.tscn" type="PackedScene" id=6]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Jump_Left"
@@ -79,6 +81,8 @@ __meta__ = {
 }
 speed = Vector2( 800, 1400 )
 
+[node name="Health" parent="." instance=ExtResource( 6 )]
+
 [node name="player" type="Sprite" parent="."]
 position = Vector2( -4.40854, -82.4768 )
 scale = Vector2( 0.65, 0.65 )
@@ -114,6 +118,13 @@ position = Vector2( -5.96735, -56.8816 )
 
 [node name="Bow" parent="." instance=ExtResource( 4 )]
 position = Vector2( -8.79578, -61.8314 )
+
+[node name="HealthBar" parent="." instance=ExtResource( 5 )]
+margin_left = -99.1113
+margin_top = -192.474
+margin_right = 560.889
+margin_bottom = -61.4743
+rect_scale = Vector2( 0.284264, 0.216796 )
 
 [connection signal="weapon_switched" from="." to="Rifle" method="_on_Player_weapon_switched"]
 [connection signal="weapon_switched" from="." to="Bow" method="_on_Player_weapon_switched"]

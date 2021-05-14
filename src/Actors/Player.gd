@@ -3,8 +3,8 @@ extends Actor
 onready var player_animation = $AnimationPlayer
 
 
-
-
+func _ready() -> void:
+	health_points = 100
 
 func _physics_process(delta: float) -> void:
 	var is_jump_interrupted: = Input.is_action_just_released("jump") and velocity.y < 0.0
@@ -92,6 +92,7 @@ func calculate_move_velocity(
 	return new_velocity
 	
 #---------------------------------------------------------------------------
+onready var player_hp = $Health
 
 
 

@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://assets/bar_border 1.png" type="Texture" id=1]
+[ext_resource path="res://assets/bar_texture_white.png" type="Texture" id=2]
+[ext_resource path="res://assets/bar_texture_dark.png" type="Texture" id=3]
+
+[node name="HealthBar" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Bar" type="TextureProgress" parent="."]
+margin_left = 8.0
+margin_top = 13.0
+margin_right = 661.0
+margin_bottom = 132.0
+value = 50.0
+texture_under = ExtResource( 3 )
+texture_over = ExtResource( 1 )
+texture_progress = ExtResource( 2 )
+tint_over = Color( 0.192157, 0.423529, 0.823529, 1 )
+tint_progress = Color( 0.0784314, 0.882353, 0.639216, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
