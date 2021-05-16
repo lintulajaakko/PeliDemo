@@ -8,9 +8,11 @@ signal depleted
 export(int) var max_hp = 10 setget set_max
 onready var current_hp = max_hp setget set_current
 
-
 func _ready():
 	_initialize()
+
+func take_damage(amount):
+	set_current(current_hp - amount)
 
 func set_max(new_max_hp):
 	max_hp = max(1, new_max_hp)

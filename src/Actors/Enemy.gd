@@ -2,7 +2,6 @@ extends "res://src/Actors/Actor.gd"
 
 #onready var raycast = $RayCast2D
 onready var hitbox = $CollisionShape2D
-onready var enemy_health = $Health
 
 var player = null
 
@@ -11,19 +10,22 @@ func _ready() -> void:
 	velocity.x = -speed.x
 	add_to_group("enemies")
 	health_points = 10
-
-func hp_events() -> void:
 	enemy_health.set_max(health_points)
+	health_bar._on_health_updated(health_points)
+	health_bar._on_max_health_update(health_points)
 
 
-
+onready var enemy_health = $Health
+onready var health_bar = $HealthBar
+onready var dmg_amount
 
 func _on_HitDetector_body_entered(body: Node) -> void:
-	var temp_hp = enemy_health.current_hp
-	if body.is_in_group("bullets") and temp_hp>0:
-		temp_hp -= 2
-	enemy_health.set_current(temp_hp)
-	print(temp_hp)
+	if body.is_in_group("rifle_rounds"):
+		dmg_amount = 1
+	if body.is_in_group("arrows"):
+		dmg_amount = 10
+	enemy_health.take_damage(dmg_amount)
+	health_bar._on_health_updated(enemy_health.current_hp)
 
 
 
@@ -47,5 +49,8 @@ func _physics_process(delta: float) -> void:
 
 func set_player(p):
 	player = p
+
+
+
 
 

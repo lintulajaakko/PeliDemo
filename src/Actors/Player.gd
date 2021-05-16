@@ -5,6 +5,9 @@ onready var player_animation = $AnimationPlayer
 
 func _ready() -> void:
 	health_points = 100
+	player_hp.set_max(health_points)
+	health_bar._on_health_updated(health_points)
+	health_bar._on_max_health_update(health_points)
 
 func _physics_process(delta: float) -> void:
 	var is_jump_interrupted: = Input.is_action_just_released("jump") and velocity.y < 0.0
@@ -93,6 +96,14 @@ func calculate_move_velocity(
 	
 #---------------------------------------------------------------------------
 onready var player_hp = $Health
+onready var health_bar = $HealthBar
+onready var dmg_amount
+
+func _on_HitDetector_body_entered(body: Node) -> void:
+	if body.is_in_group("enemies"):
+		dmg_amount = 10
+	player_hp.take_damage(dmg_amount)
+	health_bar._on_health_updated(player_hp.current_hp)
 
 
 
@@ -103,6 +114,8 @@ onready var player_hp = $Health
 	
 
 	
+
+
 
 
 

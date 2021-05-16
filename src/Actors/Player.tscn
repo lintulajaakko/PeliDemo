@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://assets/spritesheet.png" type="Texture" id=1]
 [ext_resource path="res://src/Actors/Player.gd" type="Script" id=2]
@@ -73,6 +73,9 @@ tracks/0/keys = {
 [sub_resource type="RectangleShape2D" id=5]
 extents = Vector2( 19.1987, 68.6527 )
 
+[sub_resource type="RectangleShape2D" id=6]
+extents = Vector2( 16.4068, 64.8571 )
+
 [node name="Player" type="KinematicBody2D"]
 collision_mask = 8
 script = ExtResource( 2 )
@@ -80,6 +83,8 @@ __meta__ = {
 "_edit_vertical_guides_": [ -269.542 ]
 }
 speed = Vector2( 800, 1400 )
+
+[node name="HealthBar" parent="." instance=ExtResource( 5 )]
 
 [node name="Health" parent="." instance=ExtResource( 6 )]
 
@@ -119,12 +124,12 @@ position = Vector2( -5.96735, -56.8816 )
 [node name="Bow" parent="." instance=ExtResource( 4 )]
 position = Vector2( -8.79578, -61.8314 )
 
-[node name="HealthBar" parent="." instance=ExtResource( 5 )]
-margin_left = -99.1113
-margin_top = -192.474
-margin_right = 560.889
-margin_bottom = -61.4743
-rect_scale = Vector2( 0.284264, 0.216796 )
+[node name="HitDetector" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitDetector"]
+position = Vector2( -6.71751, -64.7003 )
+shape = SubResource( 6 )
 
 [connection signal="weapon_switched" from="." to="Rifle" method="_on_Player_weapon_switched"]
 [connection signal="weapon_switched" from="." to="Bow" method="_on_Player_weapon_switched"]
+[connection signal="body_entered" from="HitDetector" to="." method="_on_HitDetector_body_entered"]
