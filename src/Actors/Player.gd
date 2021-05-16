@@ -17,12 +17,14 @@ func _ready() -> void:
 	hit_timer.set_wait_time(timer_time)
 	player_hp_bar.hide()
 
+func getDamage():
+	return 0
+
 func _on_HitDetector_body_entered(body: Node) -> void:
-	if body.is_in_group("enemies"):
-		player_dmg_amount = 10
-		player_hp.take_damage(player_dmg_amount)
-		hit_timer.start()
-		player_hp_bar.show()
+	player_dmg_amount = body.getDamage()
+	player_hp.take_damage(player_dmg_amount)
+	hit_timer.start()
+	player_hp_bar.show()
 	print(hit_timer.time_left)
 
 

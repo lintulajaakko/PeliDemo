@@ -2,6 +2,7 @@ extends "res://src/Actors/Actor.gd"
 
 #onready var raycast = $RayCast2D
 onready var hitbox = $CollisionShape2D
+export(int) var enemy_damage
 
 var player = null
 
@@ -13,6 +14,10 @@ func _ready() -> void:
 	enemy_health.set_max(health_points)
 	health_bar._on_Health_hp_changed(health_points)
 	health_bar._on_Health_max_hp_changed(health_points)
+	enemy_damage = 10
+
+func getDamage():
+	return enemy_damage
 
 
 onready var enemy_health = $Health
