@@ -20,12 +20,14 @@ onready var health_bar = $HealthBar
 onready var dmg_amount
 
 func _on_HitDetector_body_entered(body: Node) -> void:
-	if body.is_in_group("rifle_rounds"):
-		dmg_amount = 1
-	if body.is_in_group("arrows"):
-		dmg_amount = 5
+	dmg_amount = body.getDamage()
+	print(dmg_amount)
+#	if body.is_in_group("rifle_rounds"):
+#		dmg_amount = 1
+#	if body.is_in_group("arrows"):
+#		dmg_amount = 5
 	enemy_health.take_damage(dmg_amount)
-	
+
 
 
 

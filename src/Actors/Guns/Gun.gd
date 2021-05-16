@@ -10,7 +10,7 @@ var can_fire = false
 var arrows = preload("res://src/Actors/Bullets/BowArrow.tscn")
 var rifle_rounds = preload("res://src/Actors/Bullets/RifleRound.tscn")
 var gun_id 
-var damage
+export(int) var damage
 
 
 

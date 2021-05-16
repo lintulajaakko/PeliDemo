@@ -5,14 +5,16 @@ onready var player_hp = $Health
 onready var player_hp_bar = $HealthBar
 onready var hit_timer = $HitTimer
 onready var player_dmg_amount = 10
+onready var timer_time
 
 func _ready() -> void:
 	health_points = 100
+	timer_time = 1.2
 	player_hp.set_max(health_points)
 	player_hp.set_current(health_points)
 	player_hp_bar._on_Health_max_hp_changed(health_points)
 	player_hp_bar._on_Health_hp_changed(health_points)
-	hit_timer.set_wait_time(1.2)
+	hit_timer.set_wait_time(timer_time)
 	player_hp_bar.hide()
 
 func _on_HitDetector_body_entered(body: Node) -> void:
