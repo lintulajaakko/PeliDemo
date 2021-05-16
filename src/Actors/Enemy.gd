@@ -23,7 +23,7 @@ func _on_HitDetector_body_entered(body: Node) -> void:
 	if body.is_in_group("rifle_rounds"):
 		dmg_amount = 1
 	if body.is_in_group("arrows"):
-		dmg_amount = 10
+		dmg_amount = 5
 	enemy_health.take_damage(dmg_amount)
 	health_bar._on_health_updated(enemy_health.current_hp)
 
@@ -54,3 +54,7 @@ func set_player(p):
 
 
 
+
+
+func _on_Health_depleted() -> void:
+	kill()

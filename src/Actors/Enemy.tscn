@@ -56,5 +56,6 @@ modulate = Color( 0.0196078, 0.0313726, 0.603922, 1 )
 position = Vector2( 0, -46.6171 )
 shape = SubResource( 2 )
 
+[connection signal="depleted" from="Health" to="." method="_on_Health_depleted"]
 [connection signal="hp_changed" from="Health" to="." method="_on_Health_hp_changed"]
 [connection signal="body_entered" from="HitDetector" to="." method="_on_HitDetector_body_entered"]

@@ -71,10 +71,10 @@ tracks/0/keys = {
 }
 
 [sub_resource type="RectangleShape2D" id=5]
-extents = Vector2( 19.1987, 68.6527 )
+extents = Vector2( 24.938, 68.6527 )
 
 [sub_resource type="RectangleShape2D" id=6]
-extents = Vector2( 16.4068, 64.8571 )
+extents = Vector2( 28.518, 69.3265 )
 
 [node name="Player" type="KinematicBody2D"]
 collision_mask = 8
@@ -85,6 +85,11 @@ __meta__ = {
 speed = Vector2( 800, 1400 )
 
 [node name="HealthBar" parent="." instance=ExtResource( 5 )]
+margin_left = -71.433
+margin_top = -192.076
+margin_right = -71.433
+margin_bottom = -192.076
+rect_scale = Vector2( 0.205863, 0.290973 )
 
 [node name="Health" parent="." instance=ExtResource( 6 )]
 
@@ -102,8 +107,7 @@ anims/Walk_Left = SubResource( 3 )
 anims/Walk_Right = SubResource( 4 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
-position = Vector2( 2.5227, -69.2584 )
+position = Vector2( -8.16807, -67.9221 )
 shape = SubResource( 5 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -122,14 +126,15 @@ drag_margin_right = 0.06
 position = Vector2( -5.96735, -56.8816 )
 
 [node name="Bow" parent="." instance=ExtResource( 4 )]
-position = Vector2( -8.79578, -61.8314 )
+position = Vector2( -7.67205, -62.206 )
 
 [node name="HitDetector" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitDetector"]
-position = Vector2( -6.71751, -64.7003 )
+position = Vector2( -7.983, -67.7476 )
 shape = SubResource( 6 )
 
 [connection signal="weapon_switched" from="." to="Rifle" method="_on_Player_weapon_switched"]
 [connection signal="weapon_switched" from="." to="Bow" method="_on_Player_weapon_switched"]
+[connection signal="hp_changed" from="Health" to="." method="_on_Health_hp_changed"]
 [connection signal="body_entered" from="HitDetector" to="." method="_on_HitDetector_body_entered"]
