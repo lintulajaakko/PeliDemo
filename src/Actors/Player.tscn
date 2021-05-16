@@ -107,6 +107,7 @@ anims/Walk_Left = SubResource( 3 )
 anims/Walk_Right = SubResource( 4 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2( -8.16807, -67.9221 )
 shape = SubResource( 5 )
 
@@ -131,10 +132,12 @@ position = Vector2( -7.67205, -62.206 )
 [node name="HitDetector" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitDetector"]
+visible = false
 position = Vector2( -7.983, -67.7476 )
 shape = SubResource( 6 )
 
 [connection signal="weapon_switched" from="." to="Rifle" method="_on_Player_weapon_switched"]
 [connection signal="weapon_switched" from="." to="Bow" method="_on_Player_weapon_switched"]
-[connection signal="hp_changed" from="Health" to="." method="_on_Health_hp_changed"]
+[connection signal="hp_changed" from="Health" to="HealthBar" method="_on_Health_hp_changed"]
+[connection signal="max_hp_changed" from="Health" to="HealthBar" method="_on_Health_max_hp_changed"]
 [connection signal="body_entered" from="HitDetector" to="." method="_on_HitDetector_body_entered"]

@@ -1,14 +1,31 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://assets/bar_border 1.png" type="Texture" id=1]
 [ext_resource path="res://assets/bar_texture_white.png" type="Texture" id=2]
-[ext_resource path="res://assets/bar_texture_dark.png" type="Texture" id=3]
 [ext_resource path="res://src/UI/HealthBar.gd" type="Script" id=4]
 
 [node name="HealthBar" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_left = -3.36365
+margin_top = -5.04541
+margin_right = -3.36365
+margin_bottom = -5.04541
 script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="UnderBar" type="TextureProgress" parent="."]
+margin_left = 10.0908
+margin_top = 11.7725
+margin_right = 663.091
+margin_bottom = 130.773
+value = 50.0
+texture_under = ExtResource( 2 )
+texture_progress = ExtResource( 2 )
+tint_under = Color( 0.0745098, 0.0117647, 0.0117647, 1 )
+tint_progress = Color( 0.623529, 0.101961, 0.0352941, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -19,7 +36,6 @@ margin_top = 13.0
 margin_right = 661.0
 margin_bottom = 132.0
 value = 50.0
-texture_under = ExtResource( 3 )
 texture_over = ExtResource( 1 )
 texture_progress = ExtResource( 2 )
 tint_over = Color( 0.192157, 0.423529, 0.823529, 1 )
@@ -27,3 +43,5 @@ tint_progress = Color( 0.0784314, 0.882353, 0.639216, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="HpUpdate" type="Tween" parent="."]

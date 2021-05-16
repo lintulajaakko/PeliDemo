@@ -4,20 +4,22 @@ onready var player_animation = $AnimationPlayer
 onready var player_hp = $Health
 onready var player_hp_bar = $HealthBar
 onready var player_dmg_amount = 10
-
+var hpbar
 func _ready() -> void:
 	health_points = 100
 	player_hp.set_max(health_points)
 	player_hp.set_current(health_points)
-	player_hp_bar._on_max_health_update(health_points)
-	player_hp_bar._on_health_updated(health_points)
+	player_hp_bar._on_Health_max_hp_changed(health_points)
+	player_hp_bar._on_Health_hp_changed(health_points)
+ 
 
 func _on_HitDetector_body_entered(body: Node) -> void:
 	if body.is_in_group("enemies"):
 		player_dmg_amount = 10
 		player_hp.take_damage(player_dmg_amount)
-		player_hp_bar._on_health_updated(player_hp.current_hp)
 	print(player_dmg_amount)
+	
+	
 
 func _physics_process(delta: float) -> void:
 	var is_jump_interrupted: = Input.is_action_just_released("jump") and velocity.y < 0.0

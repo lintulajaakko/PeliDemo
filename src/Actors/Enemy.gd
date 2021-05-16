@@ -11,8 +11,8 @@ func _ready() -> void:
 	add_to_group("enemies")
 	health_points = 10
 	enemy_health.set_max(health_points)
-	health_bar._on_health_updated(health_points)
-	health_bar._on_max_health_update(health_points)
+	health_bar._on_Health_hp_changed(health_points)
+	health_bar._on_Health_max_hp_changed(health_points)
 
 
 onready var enemy_health = $Health
@@ -25,7 +25,7 @@ func _on_HitDetector_body_entered(body: Node) -> void:
 	if body.is_in_group("arrows"):
 		dmg_amount = 5
 	enemy_health.take_damage(dmg_amount)
-	health_bar._on_health_updated(enemy_health.current_hp)
+	
 
 
 
@@ -49,11 +49,6 @@ func _physics_process(delta: float) -> void:
 
 func set_player(p):
 	player = p
-
-
-
-
-
 
 
 func _on_Health_depleted() -> void:
