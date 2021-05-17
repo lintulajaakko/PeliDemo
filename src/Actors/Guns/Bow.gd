@@ -8,9 +8,11 @@ func _ready() -> void:
 	#bullet = preload("res://src/Actors/Bullets/BowArrow.tscn")
 	gun_id = 2
 	damage = 5
+	animation.playback_speed = 3
+	shoot_delay = 0.25
 
  
-func animation():
+func _input(_event: InputEvent) -> void:
 	if Input.is_action_pressed("shoot"):
 		animation.play("Shoot_left")
 

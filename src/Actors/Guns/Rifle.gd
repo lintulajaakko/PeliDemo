@@ -6,6 +6,7 @@ func _ready() -> void:
 	#bullet = preload("res://src/Actors/Bullets/RifleRound.tscn")
 	gun_id = 1
 	damage = 2
+	shoot_delay = 0.0
 
 
 func _on_Player_weapon_switched(type: int) -> void:

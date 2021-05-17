@@ -127,7 +127,7 @@ drag_margin_right = 0.06
 position = Vector2( -5.96735, -56.8816 )
 
 [node name="Bow" parent="." instance=ExtResource( 4 )]
-position = Vector2( -6.67205, -63.206 )
+position = Vector2( -3.99935, -62.7606 )
 
 [node name="HitDetector" type="Area2D" parent="."]
 
@@ -138,6 +138,8 @@ shape = SubResource( 6 )
 
 [node name="HitTimer" type="Timer" parent="."]
 one_shot = true
+
+[node name="ShootTimer" type="Timer" parent="."]
 
 [connection signal="weapon_switched" from="." to="Bow" method="_on_Player_weapon_switched"]
 [connection signal="weapon_switched" from="." to="Rifle" method="_on_Player_weapon_switched"]
