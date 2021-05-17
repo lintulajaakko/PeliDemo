@@ -123,12 +123,13 @@ offset_v = -1.0
 drag_margin_top = 0.06
 drag_margin_right = 0.06
 
+[node name="Bow" parent="." instance=ExtResource( 4 )]
+position = Vector2( -3.55383, -68.106 )
+rotation = 0.00552423
+
 [node name="Rifle" parent="." instance=ExtResource( 3 )]
 visible = false
 position = Vector2( -5.96735, -56.8816 )
-
-[node name="Bow" parent="." instance=ExtResource( 4 )]
-position = Vector2( -0.435692, -61.8697 )
 
 [node name="HitDetector" type="Area2D" parent="."]
 
@@ -142,8 +143,8 @@ one_shot = true
 
 [node name="ShootTimer" type="Timer" parent="."]
 
-[connection signal="weapon_switched" from="." to="Rifle" method="_on_Player_weapon_switched"]
 [connection signal="weapon_switched" from="." to="Bow" method="_on_Player_weapon_switched"]
+[connection signal="weapon_switched" from="." to="Rifle" method="_on_Player_weapon_switched"]
 [connection signal="hp_changed" from="Health" to="HealthBar" method="_on_Health_hp_changed"]
 [connection signal="max_hp_changed" from="Health" to="HealthBar" method="_on_Health_max_hp_changed"]
 [connection signal="body_entered" from="HitDetector" to="." method="_on_HitDetector_body_entered"]
