@@ -40,21 +40,57 @@ func _physics_process(delta: float) -> void:
 	
 	#---------------------------------------------------------------------------
 	#Movement inputs
-	if Input.get_action_strength("move_right") and !Input.get_action_strength("jump"):
-		player_animation.play("Walk_Right")
-	if Input.is_action_just_released("move_right"):
-		player_animation.stop()
+	var look_direction = get_local_mouse_position()
 	
-	if Input.get_action_strength("move_left") and !Input.get_action_strength("jump"):
-		player_animation.play("Walk_Left")
-	if Input.is_action_just_released("move_left"):
-		player_animation.stop()
+	if look_direction.x > 0:
+		if !Input.is_action_pressed("jump"):
+			if Input.get_action_strength("move_right"):
+				player_animation.play("Walk_Right")
+			if Input.is_action_just_released("move_right"):
+				player_animation.stop()
+		
+			if Input.get_action_strength("move_left"):
+				player_animation.play("Walk_Right")
+			
+			if Input.is_action_just_released("move_left"):
+				player_animation.stop()
+		
+		if Input.get_action_strength("jump"):
+			player_animation.play("Jump_Right")
 	
-	if Input.get_action_strength("jump") and (direction.x == 1 or direction.x == 0):
-		player_animation.play("Jump_Right")
+	if look_direction.x < 0:
+		if !Input.is_action_pressed("jump"):
+			if Input.get_action_strength("move_right"):
+				player_animation.play("Walk_Left")
+			if Input.is_action_just_released("move_right"):
+				player_animation.stop()
+			
+			if Input.get_action_strength("move_left"):
+				player_animation.play("Walk_Left")
+			
+			if Input.is_action_just_released("move_left"):
+				player_animation.stop()
+		
+		if Input.get_action_strength("jump"):
+			player_animation.play("Jump_Left")
 	
-	if Input.get_action_strength("jump") and (direction.x == -1 or direction.x == 0):
-		player_animation.play("Jump_Left")
+	
+	
+#	if Input.get_action_strength("move_right") and !Input.get_action_strength("jump"):
+#		player_animation.play("Walk_Right")
+#	if Input.is_action_just_released("move_right"):
+#		player_animation.stop()
+#
+#	if Input.get_action_strength("move_left") and !Input.get_action_strength("jump"):
+#		player_animation.play("Walk_Left")
+#	if Input.is_action_just_released("move_left"):
+#		player_animation.stop()
+	
+#	if Input.get_action_strength("jump") and (direction.x == 1 or direction.x == 0):
+#		player_animation.play("Jump_Right")
+#
+#	if Input.get_action_strength("jump") and (direction.x == -1 or direction.x == 0):
+#		player_animation.play("Jump_Left")
 		
 	gun_inputs()
 	#---------------------------------------------------------------------------
